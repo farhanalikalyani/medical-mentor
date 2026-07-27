@@ -6,7 +6,7 @@
 
 Mistake tracking, weak-area analytics, and spaced-repetition flashcards — built for medical students preparing for UWorld, NBME, and board exams.
 
-[Live Demo](#) · [Report an Issue](../../issues) · [Request a Feature](../../issues)
+[Live Demo](https://farhanalikalyani.github.io/medical-mentor/) · [Report an Issue](../../issues) · [Request a Feature](../../issues)
 
 </div>
 
@@ -21,7 +21,16 @@ Most students study the same way and get the same result: they re-read mistakes 
 - **Review flashcards on a real spaced-repetition schedule** (SM-2 algorithm), so time goes to what you're actually forgetting
 - **Get AI-mentor guidance** — targeted quiz vignettes, study plans, and mistake-pattern breakdowns
 
-This repository contains the public website: a marketing landing page, a live interactive product demo, and an admin panel for posting updates without touching code.
+This repository contains the public website: a live interactive product demo and an admin panel for posting updates without touching code.
+
+---
+
+## Screenshots
+
+| | |
+|---|---|
+| ![Home dashboard](./screenshots/image1.jpeg) | ![Log a mistake](./screenshots/image2.jpeg) |
+| ![Flashcards](./screenshots/image3.jpeg) | |
 
 ---
 
@@ -29,11 +38,11 @@ This repository contains the public website: a marketing landing page, a live in
 
 | Area | What it does |
 |---|---|
-| 🏠 **Landing page** | Marketing site with a waitlist signup, used to validate demand before the native app launches |
-| 📊 **Live demo** | The full product experience — mistake log, weak-area analytics, flashcards, AI mentor chat |
+| 📊 **Live app** | The full product experience — mistake log, weak-area analytics, flashcards, AI mentor chat |
 | 🔐 **Admin panel** | Restricted to one approved account; lets the team post updates and study materials that appear on the site instantly |
 | 📇 **Spaced repetition** | Flashcard scheduling implements the SM-2 algorithm (ease factor, interval, repetition count) |
 | 📈 **Weakness scoring** | Systems are ranked live as mistakes are logged: `score = incorrect × (1 − accuracy)` |
+| 🖥️ **Responsive** | Sidebar dashboard layout on desktop, native app-style bottom nav on mobile |
 
 ---
 
@@ -62,7 +71,7 @@ npm install
 npm run dev
 ```
 
-The app runs with demo content immediately. Admin login and live updates require Firebase — see [`src/firebase.js`](./src/firebase.js) and fill in your project's config.
+Admin login and live updates require Firebase — see [`src/firebase.js`](./src/firebase.js).
 
 ### Build for production
 
@@ -70,40 +79,31 @@ The app runs with demo content immediately. Admin login and live updates require
 npm run build
 ```
 
-Output is written to `dist/`.
-
 ---
 
 ## Deployment
 
-This repo auto-deploys to **GitHub Pages** on every push to `main` via the workflow in [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml). No hosting cost, no domain required.
-
-If you fork this project, update `base` in [`vite.config.js`](./vite.config.js) to match your repository name, then enable **Settings → Pages → Source: GitHub Actions**.
+This repo auto-deploys to **GitHub Pages** on every push to `main` via [`.github/workflows/deploy.yml`](./.github/workflows/deploy.yml). No hosting cost, no domain required.
 
 ---
 
 ## Project structure
-
-```
 medical-mentor/
 ├── src/
-│   ├── App.jsx                 # Hash-based routing: landing / demo / admin
-│   ├── firebase.js             # Firebase config + admin email gate
-│   ├── mockData.js             # Demo content for the live product demo
-│   └── components/
-│       ├── Landing.jsx         # Marketing site + waitlist form
-│       ├── MedicalMentorApp.jsx# Full product demo (mistake log, flashcards, etc.)
-│       └── AdminPanel.jsx      # Gated admin login + content management
-├── firestore.rules             # Recommended Firestore security rules
+│ ├── App.jsx # Hash-based routing: app / admin
+│ ├── firebase.js # Firebase config + admin email gate
+│ ├── mockData.js # Demo content
+│ └── components/
+│ ├── MedicalMentorApp.jsx # Full product (mistake log, flashcards, etc.)
+│ └── AdminPanel.jsx # Gated admin login + content management
+├── firestore.rules # Firestore security rules
 └── .github/workflows/deploy.yml
-```
-
 ---
 
 ## Security notes
 
 - The Firebase web config in `src/firebase.js` is safe to be public — Firebase API keys identify a project, they don't authorize access on their own
-- Actual access control lives in [`firestore.rules`](./firestore.rules): only the approved admin account can write updates or read waitlist signups; everyone else has read-only or write-only access as appropriate
+- Actual access control lives in [`firestore.rules`](./firestore.rules): only the approved admin account can write updates or read waitlist signups
 
 ---
 
