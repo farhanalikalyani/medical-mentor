@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://farhanalikalyani.github.io/medical-mentor/sitemap.xml
