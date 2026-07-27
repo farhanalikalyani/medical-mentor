@@ -29,8 +29,8 @@ This repo is also set up as a **learning project** — see the [Practice Roadmap
 
 | | |
 |---|---|
-| ![Home dashboard](./screenshots/image1.png) | ![Log a mistake](./screenshots/image2.png) |
-| ![Flashcards](./screenshots/image3.png) | |
+| ![Home dashboard](./screenshots/image1.jpeg) | ![Log a mistake](./screenshots/image2.jpeg) |
+| ![Flashcards](./screenshots/image3.jpeg) | |
 
 ---
 
